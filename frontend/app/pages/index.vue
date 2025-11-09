@@ -1,5 +1,6 @@
 <template>
   <div class="page-home">
+    <link href="https://fonts.googleapis.com/css2?family=Cinzel:wght@600;700&family=Cormorant+Garamond:wght@700&family=EB+Garamond:ital,wght@0,700;1,700&display=swap" rel="stylesheet">
     <FullPage class="page-center" background="/story/01.start.png">
       <h1>Maluhia</h1>
       <h2>Wie der Frieden zurück in die Welt kommt</h2>
@@ -105,6 +106,7 @@ const scrollToNext = () => {
     @apply text-7xl;
   }
 
+  /*
   h3 {
     @apply text-4xl;
     @apply text-white;
@@ -113,6 +115,63 @@ const scrollToNext = () => {
     @apply p-8 m-8;
     @apply bg-black/50 rounded-lg;
   }
+    */
+
+    /*h3 {
+    @apply text-4xl;
+    @apply text-white;
+    width: 33vw;
+    align-self: flex-start;
+    @apply p-8 m-8;
+    @apply bg-black/50 rounded-lg;
+    
+    font-family: 'Cormorant Garamond', 'Playfair Display', 'Georgia', serif;
+    @apply font-bold;
+    @apply leading-relaxed;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8),
+                 0 0 20px rgba(255, 215, 0, 0.3);
+    @apply backdrop-blur-sm;
+    border: 2px solid rgba(255, 215, 0, 0.3);
+    }*/
+
+    /*h3 {
+    @apply text-4xl;
+    @apply text-amber-50;
+    width: 33vw;
+    align-self: flex-start;
+    @apply p-8 m-8;
+    @apply bg-gradient-to-br from-purple-900/60 to-indigo-900/60;
+    @apply rounded-2xl;
+    
+    font-family: 'Cinzel', 'Libre Baskerville', serif;
+    @apply font-semibold;
+    @apply leading-loose;
+    text-shadow: 3px 3px 6px rgba(0, 0, 0, 0.9),
+                 0 0 15px rgba(139, 92, 246, 0.4);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4),
+                inset 0 0 0 1px rgba(255, 255, 255, 0.1);
+    @apply backdrop-blur-md;
+    }*/
+
+    h3 {
+    @apply text-5xl;
+    @apply text-yellow-50;
+    width: 33vw;
+    align-self: flex-start;
+    @apply p-8 m-8;
+    @apply bg-slate-900/30 rounded-xl;
+    
+    /* Märchen-Styling */
+    font-family: 'EB Garamond', 'Crimson Text', 'Times New Roman', serif;
+    @apply font-bold italic;
+    @apply leading-relaxed;
+    text-shadow: 2px 2px 3px rgba(0, 0, 0, 1),
+                 1px 1px 10px rgba(255, 215, 0, 0.5),
+                 -1px -1px 5px rgba(255, 255, 255, 0.1);
+    @apply backdrop-blur-md;
+    border-left: 4px solid rgba(255, 215, 0, 0.6);
+    letter-spacing: 0.02em;
+    }
 }
 
 .turtle-button {
