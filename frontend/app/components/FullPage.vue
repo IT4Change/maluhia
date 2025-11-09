@@ -18,9 +18,9 @@ const background = {
 
 <style>
 .full-page {
-    @apply w-screen;
-    @apply h-screen;
+    @apply w-screen h-screen;
     overflow-x: hidden;
+    @apply snap-center snap-start;
 
     background-image: url();
     background-size: cover;
