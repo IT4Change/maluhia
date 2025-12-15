@@ -15,9 +15,17 @@
     "@nuxt/image": "^2.0.0",
     "@nuxt/test-utils": "^3.20.1",
     "@nuxtjs/tailwindcss": "^6.14.0",
+    "email-templates": "^12.0.3",
     "eslint": "^9.39.1",
+    "nodemailer": "^7.0.11",
     "nuxt": "^4.2.1",
     "vue": "^3.5.22",
-    "vue-router": "^4.6.3"
+    "vue-router": "^4.6.3",
+    "zod": "^4.2.0"
+  },
+  "devDependencies": {
+    "@types/email-templates": "^10.0.4",
+    "@types/node": "^25.0.2",
+    "@types/nodemailer": "^7.0.4"
   }
 }

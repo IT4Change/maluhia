@@ -1,0 +1,10 @@
+extend ../layout.pug
+
+block content
+  .content
+  p!= t('emails.requestLoginLink.authenticate',)
+  a.button(href=authURL)!= t('emails.requestLoginLink.button')
+  p!= t('emails.requestLoginLink.authenticateLink')
+    | 
+    a.auth(href=authURL)!= authURL
+  p!= t('emails.requestLoginLink.hints', { loginDays })
