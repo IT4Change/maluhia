@@ -49,11 +49,6 @@ server {
         #access_log $LOG_PATH/nginx-access.hooks.log hooks_log;
         #error_log $LOG_PATH/nginx-error.backend.hook.log warn;
     }
-
-    location /admin/ {
-        #access_log $LOG_PATH/nginx-access.hooks.log hooks_log;
-        #error_log $LOG_PATH/nginx-error.backend.hook.log warn;
-    }
 }
 ```
 
