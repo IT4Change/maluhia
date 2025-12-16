@@ -1,20 +1,14 @@
 {
   "emails": {
-    "requestLoginLink": {
-      "subject": "Login-Freigabe angefordert",
-      "authenticate": "Um dich einzuloggen drücke den nachfolgenden Knopf.",
-      "authenticateLink": "Wenn die E-Mail nicht korrekt angezeigt wird kannst du auch diesem Link folgend:",
-      "button": "Anmelden",
-      "hints": "Die Anmeldung ist auf dem jeweiligen Gerät für {loginDays} Tage gültig."
+    "subscribe": {
+      "subject": "Newsletter abonnieren",
+      "confirm": "Um dich in den Maluhia-Newsletter einzutragen, drücke den nachfolgenden Knopf.",
+      "confirmLink": "Wenn die E-Mail nicht korrekt angezeigt wird kannst du auch diesem Link folgend:",
+      "button": "Abonnieren"
     },
-    "welcome": {
-      "subject": "hat dir Kalender-Zugang gewährt",
-      "new": "Du wurdest eingeladen an folgenden Kalender-Teilen teilzunehmen:",
-      "access": "Du hast Zugang zu weiteren Kalender-Teilen erhalten:",
-      "login": "Du kannst den Kalender mithilfe des nachfolgenden Knopf besuchen.",
-      "loginInstructions": "Um den Kalender zu sehen, musst du dich dort mit deiner E-Mail-Adresse einloggen.",
-      "loginLink": "Wenn die E-Mail nicht korrekt angezeigt wird kannst du auch diesem Link folgend:",
-      "button": "Kalender besuchen"
+    "resubscribe": {
+      "subject": "Willkommen zurück",
+      "content": "Du hast dich erneut zum Maluhia-Newsletter angemeldet. Schön, dass du wieder vorbei schaust."
     }
   },
   "general": {
