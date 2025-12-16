@@ -4,32 +4,32 @@
       <!-- Loading State -->
       <div v-if="isLoading" class="loading-state">
         <div class="spinner"></div>
-        <h2 class="loading-title">Bestätigung wird verarbeitet...</h2>
+        <h2 class="loading-title">BestÃ¤tigung wird verarbeitet...</h2>
         <p class="loading-text">Bitte warten Sie einen Moment.</p>
       </div>
 
       <!-- Success State -->
       <div v-else-if="isSuccess" class="success-state">
-        <div class="success-icon"></div>
-        <h2 class="success-title">Erfolgreich bestätigt!</h2>
+        <div class="success-icon">âœ“</div>
+        <h2 class="success-title">Erfolgreich bestÃ¤tigt!</h2>
         <p class="success-text">
-          Vielen Dank! Ihre E-Mail-Adresse wurde erfolgreich bestätigt.
+          Vielen Dank! Ihre E-Mail-Adresse wurde erfolgreich bestÃ¤tigt.
           Sie erhalten ab sofort unseren Newsletter.
         </p>
         <NuxtLink to="/" class="back-button">
-          Zurück zu Maluhia
+          ZurÃ¼ck zu Maluhia
         </NuxtLink>
       </div>
 
       <!-- Error State -->
       <div v-else class="error-state">
-        <div class="error-icon"></div>
-        <h2 class="error-title">Bestätigung fehlgeschlagen</h2>
+        <div class="error-icon">âœ•</div>
+        <h2 class="error-title">BestÃ¤tigung fehlgeschlagen</h2>
         <p class="error-text">
-          {{ errorMessage || 'Der Bestätigungslink ist ungültig oder abgelaufen. Bitte versuchen Sie sich erneut anzumelden.' }}
+          {{ errorMessage || 'Der BestÃ¤tigungslink ist ungÃ¼ltig oder abgelaufen. Bitte versuchen Sie sich erneut anzumelden.' }}
         </p>
         <NuxtLink to="/" class="back-button">
-          Zurück zu Maluhia
+          ZurÃ¼ck zu Maluhia
         </NuxtLink>
       </div>
     </div>
@@ -49,7 +49,7 @@ const confirmSubscription = async () => {
     const code = route.params.code as string
 
     if (!code) {
-      throw new Error('Kein Bestätigungscode gefunden')
+      throw new Error('Kein BestÃ¤tigungscode gefunden')
     }
 
     const result = await $fetch('/api/newsletter/confirm', {
@@ -62,16 +62,16 @@ const confirmSubscription = async () => {
     if (result) {
       isSuccess.value = true
     } else {
-      throw new Error('Bestätigung fehlgeschlagen')
+      throw new Error('BestÃ¤tigung fehlgeschlagen')
     }
   } catch (error) {
-    console.error('Fehler bei der Bestätigung:', error)
+    console.error('Fehler bei der BestÃ¤tigung:', error)
     isSuccess.value = false
 
     if (error.statusCode === 400) {
-      errorMessage.value = 'Der Bestätigungscode ist ungültig.'
+      errorMessage.value = 'Der BestÃ¤tigungscode ist ungÃ¼ltig.'
     } else {
-      errorMessage.value = 'Ein Fehler ist aufgetreten. Bitte versuchen Sie es später erneut.'
+      errorMessage.value = 'Ein Fehler ist aufgetreten. Bitte versuchen Sie es spÃ¤ter erneut.'
     }
   } finally {
     isLoading.value = false
