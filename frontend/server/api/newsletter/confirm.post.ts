@@ -1,7 +1,7 @@
 import { z } from 'zod'
 
 const bodySchema = z.object({
-  confirmationCode: z.string(),
+  confirmationCode: z.string().toLowerCase(),
 })
 
 const confirmEmail = async (_confirmationCode: string) => {

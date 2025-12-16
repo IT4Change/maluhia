@@ -62,11 +62,15 @@ Und wenn du genau hinhörst, dann hörst du vielleicht ihr Lied:
 Das Lied vom Frieden.
 Das Lied von Maluhia.</h3>
     </FullPage>
+    <div class="subscribe-section">
+      <Subscribe />
+    </div>
   </div>
 </template>
 
 <script setup lang="ts">
 import FullPage from '../components/FullPage.vue'
+import Subscribe from '../components/Subscribe.vue'
 
 const scrollToNext = () => {
   const pages = document.querySelectorAll('.full-page')
@@ -197,6 +201,14 @@ const scrollToNext = () => {
 .turtle-button:hover {
   transform: scale(1.1);
   box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+}
+
+.subscribe-section {
+  @apply w-screen;
+  height: 100vh;
+  @apply snap-center snap-start;
+  @apply relative;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
 }
 
 </style>

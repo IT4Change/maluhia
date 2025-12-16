@@ -1,8 +1,7 @@
 //- This sets the greeting at the end of every e-mail
 .text-block
   - var organizationUrl = ORGANIZATION_URL
-  - var organizationName = ORGANIZATION_NAME
   p.no-margin-top-bottom!= t('general.seeYou')
-    a.organization(href=organizationUrl)!= organizationName
+    a.organization(href=organizationUrl)!= APPLICATION_NAME
     | !
   

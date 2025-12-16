@@ -35,7 +35,6 @@ const sendEmailSubscribe = async (to: MAIL_TO, confirmationURL: URL) => {
       locals: {
         ...defaultParams,
         locale: 'de',
-        name,
         confirmationURL,
       },
     })
@@ -54,7 +53,6 @@ const sendEmailResubscribe = async (to: MAIL_TO) => {
         locals: {
           ...defaultParams,
           locale: 'de',
-          name,
         },
       })
     } catch (error) {
