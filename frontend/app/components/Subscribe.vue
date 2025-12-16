@@ -47,7 +47,7 @@ const isValidEmail = computed(() => {
   return emailRegex.test(email.value)
 })
 
-// Dummy API Call
+// API Call zum Backend
 const handleSubscribe = async () => {
   if (!isValidEmail.value) return
 
@@ -55,21 +55,23 @@ const handleSubscribe = async () => {
   successMessage.value = ''
 
   try {
-    // Simuliere API-Call mit setTimeout
-    await new Promise(resolve => setTimeout(resolve, 1500))
-
-    // Simuliere erfolgreiche Response
-    console.log('Dummy API Call:', {
-      endpoint: '/api/subscribe',
+    await $fetch('/api/newsletter/subscribe', {
       method: 'POST',
-      data: { email: email.value }
+      body: {
+        email: email.value
+      }
     })
 
-    successMessage.value = 'Vielen Dank! Sie haben sich erfolgreich angemeldet.'
+    successMessage.value = 'Vielen Dank! Bitte bestätigen Sie Ihre E-Mail-Adresse über den Link, den wir Ihnen gesendet haben.'
     email.value = ''
   } catch (error) {
     console.error('Fehler beim Abonnieren:', error)
-    successMessage.value = 'Ein Fehler ist aufgetreten. Bitte versuchen Sie es später erneut.'
+
+    if (error.statusCode === 400) {
+      successMessage.value = 'Bitte geben Sie eine gültige E-Mail-Adresse ein.'
+    } else {
+      successMessage.value = 'Ein Fehler ist aufgetreten. Bitte versuchen Sie es später erneut.'
+    }
   } finally {
     isSubmitting.value = false
   }
