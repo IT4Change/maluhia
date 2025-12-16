@@ -1,0 +1,10 @@
+extend ../layout.pug
+
+block content
+  .content
+  p!= t('emails.subscribe.confirm',)
+  a.button(href=confirmationURL)!= t('emails.subscribe.button')
+  p!= t('emails.subscribe.confirmLink')
+    | 
+    a.auth(href=authURL)!= authURL
+  p!= t('emails.subscribe.hints', { loginDays })
