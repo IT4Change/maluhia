@@ -28,6 +28,10 @@
         <p v-if="successMessage" class="success-message">
           {{ successMessage }}
         </p>
+
+        <p v-if="errorMessage" class="error-message-box">
+          {{ errorMessage }}
+        </p>
       </form>
     </div>
 </template>
@@ -39,6 +43,7 @@ import { ref, computed } from 'vue'
 const email = ref('')
 const isSubmitting = ref(false)
 const successMessage = ref('')
+const errorMessage = ref('')
 
 // E-Mail-Validierung
 const isValidEmail = computed(() => {
@@ -53,6 +58,7 @@ const handleSubscribe = async () => {
 
   isSubmitting.value = true
   successMessage.value = ''
+  errorMessage.value = ''
 
   try {
     await $fetch('/api/newsletter/subscribe', {
@@ -68,9 +74,9 @@ const handleSubscribe = async () => {
     console.error('Fehler beim Abonnieren:', error)
 
     if (error.statusCode === 400) {
-      successMessage.value = 'Bitte geben Sie eine gültige E-Mail-Adresse ein.'
+      errorMessage.value = 'Bitte geben Sie eine gültige E-Mail-Adresse ein.'
     } else {
-      successMessage.value = 'Ein Fehler ist aufgetreten. Bitte versuchen Sie es später erneut.'
+      errorMessage.value = 'Ein Fehler ist aufgetreten. Bitte versuchen Sie es später erneut.'
     }
   } finally {
     isSubmitting.value = false
@@ -121,5 +127,9 @@ const handleSubscribe = async () => {
 
 .success-message {
     @apply text-green-600 text-center mt-4 font-medium;
+}
+
+.error-message-box {
+    @apply text-red-600 text-center mt-4 font-medium;
 }
 </style>
