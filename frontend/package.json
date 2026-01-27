@@ -10,9 +10,11 @@
     "postinstall": "nuxt prepare",
     "db:migrate": "npx tsx ./node_modules/@mikro-orm/cli/esm.js migration:up",
     "db:migrate:create": "npx tsx ./node_modules/@mikro-orm/cli/esm.js migration:create",
-    "db:migrate:down": "npx tsx ./node_modules/@mikro-orm/cli/esm.js migration:down"
+    "db:migrate:down": "npx tsx ./node_modules/@mikro-orm/cli/esm.js migration:down",
+    "prod:start": "nuxt start"
   },
   "dependencies": {
+    "@mikro-orm/cli": "^6.5.0",
     "@mikro-orm/core": "^6.5.0",
     "@mikro-orm/mariadb": "^6.5.0",
     "@mikro-orm/migrations": "^6.5.0",
@@ -29,15 +31,14 @@
     "uuid": "^11.1.0",
     "vue": "^3.5.22",
     "vue-router": "^4.6.3",
-    "zod": "^4.2.0"
+    "zod": "^4.2.0",
+    "tsx": "^4.19.0"
   },
   "devDependencies": {
-    "@mikro-orm/cli": "^6.5.0",
     "@types/email-templates": "^10.0.4",
     "@types/node": "^25.0.2",
     "@types/nodemailer": "^7.0.4",
-    "@types/uuid": "^10.0.0",
-    "tsx": "^4.19.0"
+    "@types/uuid": "^10.0.0"
   },
   "mikro-orm": {
     "configPaths": [
