@@ -7,9 +7,15 @@
     "dev": "nuxt dev",
     "generate": "nuxt generate",
     "preview": "nuxt preview",
-    "postinstall": "nuxt prepare"
+    "postinstall": "nuxt prepare",
+    "db:migrate": "mikro-orm migration:up",
+    "db:migrate:create": "mikro-orm migration:create",
+    "db:migrate:down": "mikro-orm migration:down"
   },
   "dependencies": {
+    "@mikro-orm/core": "^6.5.0",
+    "@mikro-orm/mariadb": "^6.5.0",
+    "@mikro-orm/migrations": "^6.5.0",
     "@nuxt/eslint": "^1.10.0",
     "@nuxt/icon": "^2.1.0",
     "@nuxt/image": "^2.0.0",
@@ -24,8 +30,14 @@
     "zod": "^4.2.0"
   },
   "devDependencies": {
+    "@mikro-orm/cli": "^6.5.0",
     "@types/email-templates": "^10.0.4",
     "@types/node": "^25.0.2",
     "@types/nodemailer": "^7.0.4"
+  },
+  "mikro-orm": {
+    "configPaths": [
+      "./mikro-orm.config.ts"
+    ]
   }
 }
