@@ -1,3 +1,4 @@
+import 'dotenv/config'
 import { defineConfig } from '@mikro-orm/mariadb'
 import { Migrator } from '@mikro-orm/migrations'
 import { SubscriptionSchema } from './server/database/entities/Subscription'
