@@ -2,25 +2,30 @@ import type Mail from 'nodemailer/lib/mailer'
 import path from 'path'
 import { z } from 'zod'
 import { defaultParams, emailRenderer } from '~~/server/emails/emails'
+import { getEntityManager } from '~~/server/utils/database'
+import { Subscription } from '~~/server/database/entities/Subscription'
 
 const bodySchema = z.object({
   email: z.email().toLowerCase(),
 })
 
-const findEmail = async (email: string) => {
-  // TODO: database
-  // email (in lower case, primary), confirmed(boolean), confirmationCode(uuid), createdAt, updatedAt, 
-  if(email === 'test@it4c.dev') {
-    return {email: 'test@it4c.dev', confirmed: false, confirmationCode: 'some-uuid', createdAt: new Date(), updateAt: null}
-  }
-  if( email === 'confirmed@it4c.dev') {
-    return {email: 'confirmed@it4c.dev', confirmed: true, confirmationCode: 'some-other-uuid', createdAt: new Date(), updateAt: new Date()}
-  }
-  return null
+const findEmail = async (email: string): Promise<Subscription | null> => {
+  const em = getEntityManager()
+  return em.findOne(Subscription, { email })
 }
 
-const saveConfirmationCode = async (_email:string, _confirmationCode:string) => {
-  // TODO: database
+const saveConfirmationCode = async (email: string, confirmationCode: string) => {
+  const em = getEntityManager()
+  let subscription = await em.findOne(Subscription, { email })
+
+  if (subscription) {
+    subscription.confirmationCode = confirmationCode
+  } else {
+    subscription = em.create(Subscription, { email, confirmationCode })
+    em.persist(subscription)
+  }
+
+  await em.flush()
 }
 
 type MAIL_TO = string | Mail.Address | (string | Mail.Address)[]
@@ -69,17 +74,13 @@ export default defineEventHandler(async (event) => {
 
   const to = { address: email, name: '' }
 
-  if(!query){
+  if(!query || !query.confirmed){
     const confirmationCode = crypto.randomUUID()
     await saveConfirmationCode(email, confirmationCode)
 
     const confirmationURL = new URL(`/subscribe/${confirmationCode}`, config.CLIENT_URI)
     await sendEmailSubscribe(to, confirmationURL)
 
-    return true
-  }
-
-  if(query.confirmed){
     return true
   }
 

@@ -1,9 +1,17 @@
 services:
-  mailserver:
-    image: maildev/maildev
+  database:
+    image: webcraftmedia/maluhia-database:local-production
+    build:
+      context: ./database
+    environment:
+      - MARIADB_ROOT_PASSWORD=${MARIADB_ROOT_PASSWORD:-secret}
+      - MARIADB_DATABASE=${MARIADB_DATABASE:-maluhia}
+      - MARIADB_USER=${MARIADB_USER:-maluhia}
+      - MARIADB_PASSWORD=${MARIADB_PASSWORD:-maluhia}
+    volumes:
+      - ./data/database:/var/lib/mysql
     ports:
-      - 1080:1080
-      - 1025:1025
+      - 3306:3306
 
   frontend:
     # name the image so that it cannot be found in a DockerHub repository, otherwise it will not be built locally from the 'dockerfile' but pulled from there

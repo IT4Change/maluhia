@@ -12,6 +12,12 @@ export default defineNuxtConfig({
   ],
   runtimeConfig: {
     // The private keys which are only available within server-side
+    // DATABASE
+    DB_HOST: process.env.DB_HOST || 'database',
+    DB_PORT: (process.env.DB_PORT && parseInt(process.env.DB_PORT)) || 3306,
+    DB_USER: process.env.DB_USER || 'maluhia',
+    DB_PASSWORD: process.env.DB_PASSWORD || 'maluhia',
+    DB_NAME: process.env.DB_NAME || 'maluhia',
     // SMTP
     SMTP_HOST: 'localhost',
     SMTP_PORT: (process.env.NUXT_SMTP_PORT && parseInt(process.env.NUXT_SMTP_PORT)) || 1025,
