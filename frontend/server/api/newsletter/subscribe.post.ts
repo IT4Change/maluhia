@@ -63,21 +63,16 @@ export default defineEventHandler(async (event) => {
   const config = useRuntimeConfig()
 
   const query = await findEmail(email)
-  console.log(query)
 
   const to = { address: email, name: '' }
 
-  if(!query){
+  if(!query || !query.confirmed){
     const confirmationCode = crypto.randomUUID()
     await saveConfirmationCode(email, confirmationCode)
 
     const confirmationURL = new URL(`/subscribe/${confirmationCode}`, config.CLIENT_URI)
     await sendEmailSubscribe(to, confirmationURL)
 
-    return true
-  }
-
-  if(query.confirmed){
     return true
   }
 
