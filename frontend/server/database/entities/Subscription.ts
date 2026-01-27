@@ -4,9 +4,9 @@ export class Subscription {
   id!: number
   email!: string
   confirmationCode!: string
-  confirmed: boolean = false
-  createdAt: Date = new Date()
-  updatedAt: Date = new Date()
+  confirmed?: boolean = false
+  createdAt?: Date = new Date()
+  updatedAt?: Date = new Date()
 }
 
 export const SubscriptionSchema = new EntitySchema<Subscription>({
