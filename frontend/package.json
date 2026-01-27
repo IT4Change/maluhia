@@ -8,9 +8,9 @@
     "generate": "nuxt generate",
     "preview": "nuxt preview",
     "postinstall": "nuxt prepare",
-    "db:migrate": "mikro-orm migration:up",
-    "db:migrate:create": "mikro-orm migration:create",
-    "db:migrate:down": "mikro-orm migration:down"
+    "db:migrate": "npx tsx --tsconfig tsconfig.mikro-orm.json ./node_modules/@mikro-orm/cli/esm.js migration:up",
+    "db:migrate:create": "npx tsx --tsconfig tsconfig.mikro-orm.json ./node_modules/@mikro-orm/cli/esm.js migration:create",
+    "db:migrate:down": "npx tsx --tsconfig tsconfig.mikro-orm.json ./node_modules/@mikro-orm/cli/esm.js migration:down"
   },
   "dependencies": {
     "@mikro-orm/core": "^6.5.0",
@@ -25,6 +25,7 @@
     "eslint": "^9.39.1",
     "nodemailer": "^7.0.11",
     "nuxt": "^4.2.1",
+    "uuid": "^11.1.0",
     "vue": "^3.5.22",
     "vue-router": "^4.6.3",
     "zod": "^4.2.0"
@@ -33,7 +34,9 @@
     "@mikro-orm/cli": "^6.5.0",
     "@types/email-templates": "^10.0.4",
     "@types/node": "^25.0.2",
-    "@types/nodemailer": "^7.0.4"
+    "@types/nodemailer": "^7.0.4",
+    "@types/uuid": "^10.0.0",
+    "tsx": "^4.19.0"
   },
   "mikro-orm": {
     "configPaths": [
