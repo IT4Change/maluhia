@@ -85,9 +85,8 @@ FROM base AS production
 COPY --from=build ${DOCKER_WORKDIR}/.output ./.output
 # Copy server
 #COPY --from=build ${DOCKER_WORKDIR}/server ./server
-# Copy package.json & tsconfig.json
+# Copy package.json only (no package-lock.json to avoid devDependency conflicts)
 COPY --from=build ${DOCKER_WORKDIR}/package.json ./package.json
-COPY --from=build ${DOCKER_WORKDIR}/package-lock.json ./package-lock.json
 #COPY --from=build ${DOCKER_WORKDIR}/tsconfig.json ./tsconfig.json
 # Install production packages
 RUN npm install --omit=dev
