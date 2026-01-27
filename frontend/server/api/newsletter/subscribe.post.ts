@@ -17,7 +17,7 @@ const findEmail = async (email: string): Promise<Subscription | null> => {
 const saveConfirmationCode = async (email: string, confirmationCode: string) => {
   const em = getEntityManager()
   const subscription = em.create(Subscription, { email, confirmationCode })
-  return await em.persist(subscription)
+  return await em.persist(subscription).flush()
 }
 
 type MAIL_TO = string | Mail.Address | (string | Mail.Address)[]
@@ -63,6 +63,7 @@ export default defineEventHandler(async (event) => {
   const config = useRuntimeConfig()
 
   const query = await findEmail(email)
+  console.log(query)
 
   const to = { address: email, name: '' }
 
