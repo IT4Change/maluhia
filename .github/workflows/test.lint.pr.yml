@@ -33,6 +33,7 @@ jobs:
             admin
             docu
             docker
+            database
             release
             workflow
             other

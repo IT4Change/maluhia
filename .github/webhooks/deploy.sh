@@ -27,3 +27,4 @@ npm run build
 
 ### Start service
 pm2 start $FRONTEND_SERVICE
+pm2 save
