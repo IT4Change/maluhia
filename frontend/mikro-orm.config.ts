@@ -1,5 +1,6 @@
 import { defineConfig } from '@mikro-orm/mariadb'
 import { Migrator } from '@mikro-orm/migrations'
+import { SubscriptionSchema } from './server/database/entities/Subscription'
 
 export default defineConfig({
   host: process.env.DB_HOST || 'database',
@@ -7,8 +8,7 @@ export default defineConfig({
   user: process.env.DB_USER || 'maluhia',
   password: process.env.DB_PASSWORD || 'maluhia',
   dbName: process.env.DB_NAME || 'maluhia',
-  entities: ['./server/database/entities/*.ts'],
-  entitiesTs: ['./server/database/entities/*.ts'],
+  entities: [SubscriptionSchema],
   extensions: [Migrator],
   migrations: {
     path: './server/database/migrations',

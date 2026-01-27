@@ -1,5 +1,5 @@
 import { MikroORM, type EntityManager } from '@mikro-orm/mariadb'
-import config from '../../mikro-orm.config'
+import { SubscriptionSchema } from '../database/entities/Subscription'
 
 export const orm = {
   instance: null as MikroORM | null,
@@ -11,7 +11,16 @@ export async function initDatabase(): Promise<MikroORM> {
     return orm.instance
   }
 
-  orm.instance = await MikroORM.init(config)
+  const config = useRuntimeConfig()
+
+  orm.instance = await MikroORM.init({
+    host: config.DB_HOST as string,
+    port: config.DB_PORT as number,
+    user: config.DB_USER as string,
+    password: config.DB_PASSWORD as string,
+    dbName: config.DB_NAME as string,
+    entities: [SubscriptionSchema],
+  })
   orm.em = orm.instance.em
 
   return orm.instance
