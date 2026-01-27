@@ -25,6 +25,9 @@ export TZ=UTC
 npm ci --omit=dev
 npm run build
 
+### Migrate Database
+npm run db:migrate
+
 ### Start service
 pm2 start $FRONTEND_SERVICE
 pm2 save
