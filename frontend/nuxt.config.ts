@@ -19,7 +19,7 @@ export default defineNuxtConfig({
     DB_PASSWORD: process.env.DB_PASSWORD || 'maluhia',
     DB_NAME: process.env.DB_NAME || 'maluhia',
     // SMTP
-    SMTP_HOST: 'localhost',
+    SMTP_HOST: process.env.SMTP_HOST || 'mailserver',
     SMTP_PORT: (process.env.SMTP_PORT && parseInt(process.env.SMTP_PORT)) || 1025,
     SMTP_IGNORE_TLS: process.env.SMTP_IGNORE_TLS !== 'false', // default = true
     SMTP_SECURE: process.env.SMTP_SECURE === 'true',
