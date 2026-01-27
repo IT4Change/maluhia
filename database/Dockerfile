@@ -1,4 +1,4 @@
-FROM mariadb:11
+FROM mariadb:latest
 
 # Set default character set and collation
 ENV MARIADB_CHARSET=utf8mb4
