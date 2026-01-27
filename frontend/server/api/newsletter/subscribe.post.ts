@@ -16,8 +16,16 @@ const findEmail = async (email: string): Promise<Subscription | null> => {
 
 const saveConfirmationCode = async (email: string, confirmationCode: string) => {
   const em = getEntityManager()
-  const subscription = em.create(Subscription, { email, confirmationCode })
-  return await em.persist(subscription).flush()
+  let subscription = await em.findOne(Subscription, { email })
+
+  if (subscription) {
+    subscription.confirmationCode = confirmationCode
+  } else {
+    subscription = em.create(Subscription, { email, confirmationCode })
+    em.persist(subscription)
+  }
+
+  await em.flush()
 }
 
 type MAIL_TO = string | Mail.Address | (string | Mail.Address)[]
