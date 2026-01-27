@@ -31,7 +31,7 @@ export default defineNuxtConfig({
     SMTP_MAX_MESSAGES:
       (process.env.SMTP_MAX_MESSAGES && parseInt(process.env.SMTP_MAX_MESSAGES)) || 100,
     // DOMAIN
-    CLIENT_URI: 'http://localhost:3000',
+    CLIENT_URI: process.env.CLIENT_URI || 'http://localhost:3000',
 
     // Keys within public, will be also exposed to the client-side
     public: {},
